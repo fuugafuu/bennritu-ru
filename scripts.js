@@ -114,7 +114,7 @@ function generateRandomNumber() {
 }
 
 // 色選択ツール
-document.getElementById("colorPicker").addEventListener("input", function () {
+document.getElementById("colorSelector").addEventListener("input", function () {
   const color = this.value;
   document.getElementById("selectedColor").textContent = color;
 });
