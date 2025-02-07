@@ -146,7 +146,7 @@ document.getElementById("imageUpload").addEventListener("change", function (e) {
   reader.readAsDataURL(file);
 });
 
-// QRコード生成
+// QRコード作成
 function generateQRCode() {
   const text = document.getElementById("qrText").value;
   const qrCode = new QRCode(document.getElementById("qrCode"), {
