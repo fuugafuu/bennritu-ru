@@ -12,7 +12,7 @@ function clearCalculator() {
 function calculateResult() {
   const display = document.getElementById("calculatorDisplay");
   try {
-    display.value = eval(display.value);
+    display.value = eval(display.value); // eval関数で計算
   } catch (e) {
     display.value = "エラー";
   }
@@ -21,7 +21,7 @@ function calculateResult() {
 // タイマーの関数
 let timerInterval;
 function startTimer() {
-  let seconds = document.getElementById("timerInput").value;
+  let seconds = parseInt(document.getElementById("timerInput").value, 10);
   const display = document.getElementById("timerDisplay");
 
   timerInterval = setInterval(function () {
@@ -32,6 +32,7 @@ function startTimer() {
       display.textContent = `${min < 10 ? '0' : ''}${min}:${sec < 10 ? '0' : ''}${sec}`;
     } else {
       clearInterval(timerInterval);
+      alert("タイマー終了");
     }
   }, 1000);
 }
@@ -72,8 +73,7 @@ function updateWorldClock() {
   let minutes = date.getUTCMinutes();
   let seconds = date.getUTCSeconds();
   
-  // 現在のタイムゾーンに基づく表示
-  const country = "UTC";
+  const country = "UTC"; // 世界時計を基準に表示
   document.getElementById("worldClockCountry").textContent = `国名: ${country}`;
   document.getElementById("worldClockDisplay").textContent =
     `${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
@@ -84,7 +84,7 @@ setInterval(updateWorldClock, 1000);
 function loginAdmin() {
   const password = document.getElementById("adminPassword").value;
   if (password === "201307") {
-    document.getElementById("adminTools").style.display = "block";
+    document.getElementById("adminTools").style.display = "block"; // ログイン成功でツール表示
   } else {
     alert("パスワードが間違っています");
   }
@@ -92,13 +92,13 @@ function loginAdmin() {
 
 function encryptText() {
   const text = document.getElementById("textToEncrypt").value;
-  const encrypted = btoa(text);
+  const encrypted = btoa(text); // Base64エンコード
   document.getElementById("encryptedText").textContent = encrypted;
 }
 
 function decryptText() {
   const encrypted = document.getElementById("textToDecrypt").value;
-  const decrypted = atob(encrypted);
+  const decrypted = atob(encrypted); // Base64デコード
   document.getElementById("decryptedText").textContent = decrypted;
 }
 
@@ -109,7 +109,7 @@ function generateRandomName() {
 }
 
 function generateRandomNumber() {
-  const randomNumber = Math.floor(Math.random() * 10000);
+  const randomNumber = Math.floor(Math.random() * 10000); // 0〜9999のランダム数字
   document.getElementById("randomNumber").textContent = randomNumber;
 }
 
@@ -121,8 +121,8 @@ document.getElementById("colorPicker").addEventListener("input", function () {
 
 // 通貨換算
 function convertCurrency() {
-  const amount = document.getElementById("currencyInput").value;
-  const rate = document.getElementById("currencySelect").value;
+  const amount = parseFloat(document.getElementById("currencyInput").value);
+  const rate = parseFloat(document.getElementById("currencySelect").value);
   const convertedAmount = amount * rate;
   document.getElementById("convertedCurrency").textContent = convertedAmount.toFixed(2);
 }
