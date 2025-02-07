@@ -102,6 +102,17 @@ function decryptText() {
   document.getElementById("decryptedText").textContent = decrypted;
 }
 
+function generateRandomName() {
+  const names = ["佐藤", "鈴木", "高橋", "田中", "伊藤"];
+  const randomName = names[Math.floor(Math.random() * names.length)];
+  document.getElementById("randomName").textContent = randomName;
+}
+
+function generateRandomNumber() {
+  const randomNumber = Math.floor(Math.random() * 10000);
+  document.getElementById("randomNumber").textContent = randomNumber;
+}
+
 // 色選択ツール
 document.getElementById("colorPicker").addEventListener("input", function () {
   const color = this.value;
