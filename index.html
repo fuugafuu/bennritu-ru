@@ -4,138 +4,221 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ツール集</title>
-  <script src="scripts.js"></script>
-  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script> <!-- QRコード作成ライブラリ -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>ツール集</h1>
-
-    <!-- 電卓 -->
-    <div class="tool">
-      <h2>電卓</h2>
-      <input type="text" id="calculatorDisplay" disabled>
-      <div>
-        <button onclick="appendToCalculator(1)">1</button>
-        <button onclick="appendToCalculator(2)">2</button>
-        <button onclick="appendToCalculator(3)">3</button>
-        <button onclick="appendToCalculator('+')">+</button>
-      </div>
-      <div>
-        <button onclick="appendToCalculator(4)">4</button>
-        <button onclick="appendToCalculator(5)">5</button>
-        <button onclick="appendToCalculator(6)">6</button>
-        <button onclick="appendToCalculator('-')">-</button>
-      </div>
-      <div>
-        <button onclick="appendToCalculator(7)">7</button>
-        <button onclick="appendToCalculator(8)">8</button>
-        <button onclick="appendToCalculator(9)">9</button>
-        <button onclick="appendToCalculator('*')">*</button>
-      </div>
-      <div>
-        <button onclick="appendToCalculator(0)">0</button>
-        <button onclick="clearCalculator()">C</button>
-        <button onclick="calculateResult()">=</button>
-        <button onclick="appendToCalculator('/')">/</button>
-      </div>
-    </div>
-
-    <!-- タイマー -->
-    <div class="tool">
-      <h2>タイマー</h2>
-      <input type="number" id="timerInput" placeholder="秒数">
-      <button onclick="startTimer()">スタート</button>
-      <div id="timerDisplay">00:00</div>
-    </div>
-
-    <!-- ストップウォッチ -->
-    <div class="tool">
-      <h2>ストップウォッチ</h2>
-      <div id="stopwatchDisplay">00:00:00</div>
-      <button onclick="startStopwatch()">スタート</button>
-      <button onclick="stopStopwatch()">ストップ</button>
-      <button onclick="resetStopwatch()">リセット</button>
-    </div>
-
-    <!-- 世界時計 -->
-    <div class="tool">
-      <h2>世界時計</h2>
-      <div id="worldClockDisplay">00:00:00</div>
-      <div id="worldClockCountry">-</div> <!-- 国名表示 -->
-    </div>
-
-    <!-- 管理者ツール -->
-    <div class="tool">
-      <h2>管理者ツール</h2>
-      <input type="password" id="adminPassword" placeholder="パスワード">
-      <button onclick="loginAdmin()">ログイン</button>
-
-      <div id="adminTools" style="display:none;">
-        <h3>文字暗号化ツール</h3>
-        <input type="text" id="textToEncrypt" placeholder="暗号化するテキスト">
-        <button onclick="encryptText()">暗号化</button>
-        <div id="encryptedText"></div>
-
-        <h3>暗号復元ツール</h3>
-        <input type="text" id="textToDecrypt" placeholder="復元するテキスト">
-        <button onclick="decryptText()">復元</button>
-        <div id="decryptedText"></div>
-
-        <h3>名前作成ツール</h3>
-        <button onclick="generateRandomName()">ランダム名前作成</button>
-        <div id="randomName"></div>
-
-        <h3>数字ランダム作成</h3>
-        <button onclick="generateRandomNumber()">ランダム数字作成</button>
-        <div id="randomNumber"></div>
-      </div>
-    </div>
-
-    <!-- 他のツール -->
-    <div class="tool">
-      <h2>色の選択ツール</h2>
-      <input type="color" id="colorPicker">
-      <div>選択された色: <span id="selectedColor">#000000</span></div>
-    </div>
-
-    <div class="tool">
-      <h2>メモ帳</h2>
-      <textarea id="notepad" rows="5" cols="30"></textarea>
-    </div>
-
-    <div class="tool">
-      <h2>通貨換算</h2>
-      <input type="number" id="currencyInput" placeholder="金額">
-      <select id="currencySelect">
-        <option value="1.0">USD</option>
-        <option value="0.9">EUR</option>
-        <option value="110.5">JPY</option>
-      </select>
-      <button onclick="convertCurrency()">換算</button>
-      <div>換算額: <span id="convertedCurrency"></span></div>
-    </div>
-
-    <div class="tool">
-      <h2>画像エディタ</h2>
-      <input type="file" id="imageUpload" accept="image/*">
-      <canvas id="imageCanvas"></canvas>
-    </div>
-
-    <div class="tool">
-      <h2>QRコード生成</h2>
-      <input type="text" id="qrText" placeholder="QRコードにするテキスト">
-      <button onclick="generateQRCode()">生成</button>
-      <div id="qrCode"></div>
-    </div>
-
-  </div>
-  
-  <!-- 右下の署名 -->
-  <div class="signature">
-    ふうが作
+  <div id="calculator">
+    <h3>電卓</h3>
+    <input type="text" id="calculatorDisplay" disabled>
+    <br>
+    <button onclick="appendToCalculator('1')">1</button>
+    <button onclick="appendToCalculator('2')">2</button>
+    <button onclick="appendToCalculator('3')">3</button>
+    <button onclick="appendToCalculator('+')">+</button><br>
+    <button onclick="appendToCalculator('4')">4</button>
+    <button onclick="appendToCalculator('5')">5</button>
+    <button onclick="appendToCalculator('6')">6</button>
+    <button onclick="appendToCalculator('-')">-</button><br>
+    <button onclick="appendToCalculator('7')">7</button>
+    <button onclick="appendToCalculator('8')">8</button>
+    <button onclick="appendToCalculator('9')">9</button>
+    <button onclick="appendToCalculator('*')">*</button><br>
+    <button onclick="appendToCalculator('0')">0</button>
+    <button onclick="clearCalculator()">C</button>
+    <button onclick="calculateResult()">=</button>
+    <button onclick="appendToCalculator('/')">/</button>
   </div>
 
+  <div id="timer">
+    <h3>タイマー</h3>
+    <input type="number" id="timerInput" placeholder="秒数">
+    <button onclick="startTimer()">スタート</button>
+    <div id="timerDisplay"></div>
+  </div>
+
+  <div id="stopwatch">
+    <h3>ストップウォッチ</h3>
+    <div id="stopwatchDisplay">00:00:00</div>
+    <button onclick="startStopwatch()">スタート</button>
+    <button onclick="stopStopwatch()">ストップ</button>
+    <button onclick="resetStopwatch()">リセット</button>
+  </div>
+
+  <div id="worldClock">
+    <h3>世界時計</h3>
+    <div id="worldClockCountry">国名: UTC</div>
+    <div id="worldClockDisplay">00:00:00</div>
+  </div>
+
+  <div id="adminPanel">
+    <h3>管理者ツール</h3>
+    <input type="password" id="adminPassword" placeholder="パスワード">
+    <button onclick="loginAdmin()">ログイン</button>
+    <div id="adminTools" style="display:none;">
+      <h4>文字暗号化</h4>
+      <input type="text" id="textToEncrypt" placeholder="文字列">
+      <button onclick="encryptText()">暗号化</button>
+      <div id="encryptedText"></div>
+      <h4>文字復元</h4>
+      <input type="text" id="textToDecrypt" placeholder="暗号化された文字">
+      <button onclick="decryptText()">復元</button>
+      <div id="decryptedText"></div>
+      <h4>ランダム名前作成</h4>
+      <button onclick="generateRandomName()">名前作成</button>
+      <div id="randomName"></div>
+      <h4>ランダム数字作成</h4>
+      <button onclick="generateRandomNumber()">数字作成</button>
+      <div id="randomNumber"></div>
+    </div>
+  </div>
+
+  <div id="currencyConverter">
+    <h3>通貨換算</h3>
+    <input type="number" id="currencyInput" placeholder="金額">
+    <select id="currencySelect">
+      <option value="1">USD</option>
+      <option value="109">JPY</option>
+      <option value="0.84">EUR</option>
+    </select>
+    <button onclick="convertCurrency()">換算</button>
+    <div id="convertedCurrency"></div>
+  </div>
+
+  <div id="imageEditor">
+    <h3>画像エディタ</h3>
+    <input type="file" id="imageUpload">
+    <canvas id="imageCanvas"></canvas>
+  </div>
+
+  <div id="qrCodeGenerator">
+    <h3>QRコード作成</h3>
+    <input type="text" id="qrText" placeholder="QRに変換する文字">
+    <button onclick="generateQRCode()">作成</button>
+    <div id="qrCode"></div>
+  </div>
+
+  <div id="colorPicker">
+    <h3>色選択</h3>
+    <input type="color" id="colorSelector">
+    <div id="selectedColor">選択された色</div>
+  </div>
+
+  <footer>
+    <p>ふうが作</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ツール集</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="calculator">
+    <h3>電卓</h3>
+    <input type="text" id="calculatorDisplay" disabled>
+    <br>
+    <button onclick="appendToCalculator('1')">1</button>
+    <button onclick="appendToCalculator('2')">2</button>
+    <button onclick="appendToCalculator('3')">3</button>
+    <button onclick="appendToCalculator('+')">+</button><br>
+    <button onclick="appendToCalculator('4')">4</button>
+    <button onclick="appendToCalculator('5')">5</button>
+    <button onclick="appendToCalculator('6')">6</button>
+    <button onclick="appendToCalculator('-')">-</button><br>
+    <button onclick="appendToCalculator('7')">7</button>
+    <button onclick="appendToCalculator('8')">8</button>
+    <button onclick="appendToCalculator('9')">9</button>
+    <button onclick="appendToCalculator('*')">*</button><br>
+    <button onclick="appendToCalculator('0')">0</button>
+    <button onclick="clearCalculator()">C</button>
+    <button onclick="calculateResult()">=</button>
+    <button onclick="appendToCalculator('/')">/</button>
+  </div>
+
+  <div id="timer">
+    <h3>タイマー</h3>
+    <input type="number" id="timerInput" placeholder="秒数">
+    <button onclick="startTimer()">スタート</button>
+    <div id="timerDisplay"></div>
+  </div>
+
+  <div id="stopwatch">
+    <h3>ストップウォッチ</h3>
+    <div id="stopwatchDisplay">00:00:00</div>
+    <button onclick="startStopwatch()">スタート</button>
+    <button onclick="stopStopwatch()">ストップ</button>
+    <button onclick="resetStopwatch()">リセット</button>
+  </div>
+
+  <div id="worldClock">
+    <h3>世界時計</h3>
+    <div id="worldClockCountry">国名: UTC</div>
+    <div id="worldClockDisplay">00:00:00</div>
+  </div>
+
+  <div id="adminPanel">
+    <h3>管理者ツール</h3>
+    <input type="password" id="adminPassword" placeholder="パスワード">
+    <button onclick="loginAdmin()">ログイン</button>
+    <div id="adminTools" style="display:none;">
+      <h4>文字暗号化</h4>
+      <input type="text" id="textToEncrypt" placeholder="文字列">
+      <button onclick="encryptText()">暗号化</button>
+      <div id="encryptedText"></div>
+      <h4>文字復元</h4>
+      <input type="text" id="textToDecrypt" placeholder="暗号化された文字">
+      <button onclick="decryptText()">復元</button>
+      <div id="decryptedText"></div>
+      <h4>ランダム名前作成</h4>
+      <button onclick="generateRandomName()">名前作成</button>
+      <div id="randomName"></div>
+      <h4>ランダム数字作成</h4>
+      <button onclick="generateRandomNumber()">数字作成</button>
+      <div id="randomNumber"></div>
+    </div>
+  </div>
+
+  <div id="currencyConverter">
+    <h3>通貨換算</h3>
+    <input type="number" id="currencyInput" placeholder="金額">
+    <select id="currencySelect">
+      <option value="1">USD</option>
+      <option value="109">JPY</option>
+      <option value="0.84">EUR</option>
+    </select>
+    <button onclick="convertCurrency()">換算</button>
+    <div id="convertedCurrency"></div>
+  </div>
+
+  <div id="imageEditor">
+    <h3>画像エディタ</h3>
+    <input type="file" id="imageUpload">
+    <canvas id="imageCanvas"></canvas>
+  </div>
+
+  <div id="qrCodeGenerator">
+    <h3>QRコード作成</h3>
+    <input type="text" id="qrText" placeholder="QRに変換する文字">
+    <button onclick="generateQRCode()">作成</button>
+    <div id="qrCode"></div>
+  </div>
+
+  <div id="colorPicker">
+    <h3>色選択</h3>
+    <input type="color" id="colorSelector">
+    <div id="selectedColor">選択された色</div>
+  </div>
+
+  <footer>
+    <p>ふうが作</p>
+  </footer>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
