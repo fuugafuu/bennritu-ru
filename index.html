@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ツール集</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
 </head>
 <body>
+  <!-- 電卓 -->
   <div id="calculator">
     <h3>電卓</h3>
     <input type="text" id="calculatorDisplay" disabled>
@@ -29,6 +31,7 @@
     <button onclick="appendToCalculator('/')">/</button>
   </div>
 
+  <!-- タイマー -->
   <div id="timer">
     <h3>タイマー</h3>
     <input type="number" id="timerInput" placeholder="秒数">
@@ -36,6 +39,7 @@
     <div id="timerDisplay"></div>
   </div>
 
+  <!-- ストップウォッチ -->
   <div id="stopwatch">
     <h3>ストップウォッチ</h3>
     <div id="stopwatchDisplay">00:00:00</div>
@@ -44,12 +48,14 @@
     <button onclick="resetStopwatch()">リセット</button>
   </div>
 
+  <!-- 世界時計 -->
   <div id="worldClock">
     <h3>世界時計</h3>
     <div id="worldClockCountry">国名: UTC</div>
     <div id="worldClockDisplay">00:00:00</div>
   </div>
 
+  <!-- 管理者ツール -->
   <div id="adminPanel">
     <h3>管理者ツール</h3>
     <input type="password" id="adminPassword" placeholder="パスワード">
@@ -72,6 +78,7 @@
     </div>
   </div>
 
+  <!-- 通貨換算 -->
   <div id="currencyConverter">
     <h3>通貨換算</h3>
     <input type="number" id="currencyInput" placeholder="金額">
@@ -84,12 +91,14 @@
     <div id="convertedCurrency"></div>
   </div>
 
+  <!-- 画像エディタ -->
   <div id="imageEditor">
     <h3>画像エディタ</h3>
     <input type="file" id="imageUpload">
     <canvas id="imageCanvas"></canvas>
   </div>
 
+  <!-- QRコード作成 -->
   <div id="qrCodeGenerator">
     <h3>QRコード作成</h3>
     <input type="text" id="qrText" placeholder="QRに変換する文字">
@@ -97,12 +106,14 @@
     <div id="qrCode"></div>
   </div>
 
+  <!-- 色選択 -->
   <div id="colorPicker">
     <h3>色選択</h3>
     <input type="color" id="colorSelector">
     <div id="selectedColor">選択された色</div>
   </div>
 
+  <!-- フッター -->
   <footer>
     <p>ふうが作</p>
   </footer>
