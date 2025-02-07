@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ツール集v1.0β「一部使えません」</title>
+  <title>ツール集</title>
   <script src="scripts.js"></script>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script> <!-- QRコード作成ライブラリ -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>ツール集v1.0β「一部使えません」</h1>
+    <h1>ツール集</h1>
 
     <!-- 電卓 -->
     <div class="tool">
@@ -62,6 +63,7 @@
     <div class="tool">
       <h2>世界時計</h2>
       <div id="worldClockDisplay">00:00:00</div>
+      <div id="worldClockCountry">-</div> <!-- 国名表示 -->
     </div>
 
     <!-- 管理者ツール -->
@@ -103,14 +105,8 @@
         <option value="0.9">EUR</option>
         <option value="110.5">JPY</option>
       </select>
+      <button onclick="convertCurrency()">換算</button>
       <div>換算額: <span id="convertedCurrency"></span></div>
-    </div>
-
-    <div class="tool">
-      <h2>文字数カウント</h2>
-      <input type="text" id="textForCounting" placeholder="文字列を入力">
-      <button onclick="countCharacters()">文字数をカウント</button>
-      <div>文字数: <span id="charCount">0</span></div>
     </div>
 
     <div class="tool">
@@ -120,60 +116,10 @@
     </div>
 
     <div class="tool">
-      <h2>時間計算</h2>
-      <input type="time" id="startTime">
-      <input type="time" id="endTime">
-      <button onclick="calculateTimeDifference()">計算</button>
-      <div>時間差: <span id="timeDifference"></span></div>
-    </div>
-
-    <div class="tool">
-      <h2>文字列置換</h2>
-      <input type="text" id="stringToReplace" placeholder="元の文字列">
-      <input type="text" id="replaceString" placeholder="置換後の文字列">
-      <button onclick="replaceString()">置換</button>
-      <div id="replacedString"></div>
-    </div>
-
-    <div class="tool">
-      <h2>ユーザー名生成ツール</h2>
-      <button onclick="generateUsername()">生成</button>
-      <div id="generatedUsername"></div>
-    </div>
-
-    <div class="tool">
-      <h2>ランダムな数字生成ツール</h2>
-      <button onclick="generateRandomNumber()">生成</button>
-      <div id="randomNumber"></div>
-    </div>
-
-    <div class="tool">
       <h2>QRコード生成</h2>
       <input type="text" id="qrText" placeholder="QRコードにするテキスト">
       <button onclick="generateQRCode()">生成</button>
       <div id="qrCode"></div>
-    </div>
-
-    <div class="tool">
-      <h2>ヘックスカラーからRGBへの変換</h2>
-      <input type="text" id="hexColor" placeholder="#RRGGBB">
-      <button onclick="hexToRgb()">変換</button>
-      <div id="rgbColor"></div>
-    </div>
-
-    <div class="tool">
-      <h2>テキストサイズ変更</h2>
-      <input type="number" id="textSize" placeholder="サイズ">
-      <button onclick="changeTextSize()">変更</button>
-      <div id="textToResize">このテキストのサイズを変更できます。</div>
-    </div>
-
-    <div class="tool">
-      <h2>時間帯変換ツール</h2>
-      <input type="time" id="timeInCurrentZone">
-      <input type="text" id="timezoneOffset" placeholder="タイムゾーンオフセット">
-      <button onclick="convertTimezone()">変換</button>
-      <div id="convertedTime"></div>
     </div>
 
   </div>
