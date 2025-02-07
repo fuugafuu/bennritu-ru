@@ -83,7 +83,7 @@
       </div>
     </div>
 
-    <!-- 新しいツール -->
+    <!-- 他のツール -->
     <div class="tool">
       <h2>色の選択ツール</h2>
       <input type="color" id="colorPicker">
@@ -113,7 +113,68 @@
       <div>文字数: <span id="charCount">0</span></div>
     </div>
 
-    <!-- 他のツール追加する場所 -->
+    <div class="tool">
+      <h2>画像エディタ</h2>
+      <input type="file" id="imageUpload" accept="image/*">
+      <canvas id="imageCanvas"></canvas>
+    </div>
+
+    <div class="tool">
+      <h2>時間計算</h2>
+      <input type="time" id="startTime">
+      <input type="time" id="endTime">
+      <button onclick="calculateTimeDifference()">計算</button>
+      <div>時間差: <span id="timeDifference"></span></div>
+    </div>
+
+    <div class="tool">
+      <h2>文字列置換</h2>
+      <input type="text" id="stringToReplace" placeholder="元の文字列">
+      <input type="text" id="replaceString" placeholder="置換後の文字列">
+      <button onclick="replaceString()">置換</button>
+      <div id="replacedString"></div>
+    </div>
+
+    <div class="tool">
+      <h2>ユーザー名生成ツール</h2>
+      <button onclick="generateUsername()">生成</button>
+      <div id="generatedUsername"></div>
+    </div>
+
+    <div class="tool">
+      <h2>ランダムな数字生成ツール</h2>
+      <button onclick="generateRandomNumber()">生成</button>
+      <div id="randomNumber"></div>
+    </div>
+
+    <div class="tool">
+      <h2>QRコード生成</h2>
+      <input type="text" id="qrText" placeholder="QRコードにするテキスト">
+      <button onclick="generateQRCode()">生成</button>
+      <div id="qrCode"></div>
+    </div>
+
+    <div class="tool">
+      <h2>ヘックスカラーからRGBへの変換</h2>
+      <input type="text" id="hexColor" placeholder="#RRGGBB">
+      <button onclick="hexToRgb()">変換</button>
+      <div id="rgbColor"></div>
+    </div>
+
+    <div class="tool">
+      <h2>テキストサイズ変更</h2>
+      <input type="number" id="textSize" placeholder="サイズ">
+      <button onclick="changeTextSize()">変更</button>
+      <div id="textToResize">このテキストのサイズを変更できます。</div>
+    </div>
+
+    <div class="tool">
+      <h2>時間帯変換ツール</h2>
+      <input type="time" id="timeInCurrentZone">
+      <input type="text" id="timezoneOffset" placeholder="タイムゾーンオフセット">
+      <button onclick="convertTimezone()">変換</button>
+      <div id="convertedTime"></div>
+    </div>
 
   </div>
   
