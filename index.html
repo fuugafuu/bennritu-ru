@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ツール集</title>
+  <script src="scripts.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>ツール集</h1>
+
+    <!-- 電卓 -->
+    <div class="tool">
+      <h2>電卓</h2>
+      <input type="text" id="calculatorDisplay" disabled>
+      <div>
+        <button onclick="appendToCalculator(1)">1</button>
+        <button onclick="appendToCalculator(2)">2</button>
+        <button onclick="appendToCalculator(3)">3</button>
+        <button onclick="appendToCalculator('+')">+</button>
+      </div>
+      <div>
+        <button onclick="appendToCalculator(4)">4</button>
+        <button onclick="appendToCalculator(5)">5</button>
+        <button onclick="appendToCalculator(6)">6</button>
+        <button onclick="appendToCalculator('-')">-</button>
+      </div>
+      <div>
+        <button onclick="appendToCalculator(7)">7</button>
+        <button onclick="appendToCalculator(8)">8</button>
+        <button onclick="appendToCalculator(9)">9</button>
+        <button onclick="appendToCalculator('*')">*</button>
+      </div>
+      <div>
+        <button onclick="appendToCalculator(0)">0</button>
+        <button onclick="clearCalculator()">C</button>
+        <button onclick="calculateResult()">=</button>
+        <button onclick="appendToCalculator('/')">/</button>
+      </div>
+    </div>
+
+    <!-- タイマー -->
+    <div class="tool">
+      <h2>タイマー</h2>
+      <input type="number" id="timerInput" placeholder="秒数">
+      <button onclick="startTimer()">スタート</button>
+      <div id="timerDisplay">00:00</div>
+    </div>
+
+    <!-- ストップウォッチ -->
+    <div class="tool">
+      <h2>ストップウォッチ</h2>
+      <div id="stopwatchDisplay">00:00:00</div>
+      <button onclick="startStopwatch()">スタート</button>
+      <button onclick="stopStopwatch()">ストップ</button>
+      <button onclick="resetStopwatch()">リセット</button>
+    </div>
+
+    <!-- 世界時計 -->
+    <div class="tool">
+      <h2>世界時計</h2>
+      <div id="worldClockDisplay">00:00:00</div>
+    </div>
+
+    <!-- 管理者ツール -->
+    <div class="tool">
+      <h2>管理者ツール</h2>
+      <input type="password" id="adminPassword" placeholder="パスワード">
+      <button onclick="loginAdmin()">ログイン</button>
+
+      <div id="adminTools" style="display:none;">
+        <h3>文字暗号化ツール</h3>
+        <input type="text" id="textToEncrypt" placeholder="暗号化するテキスト">
+        <button onclick="encryptText()">暗号化</button>
+        <div id="encryptedText"></div>
+
+        <h3>暗号復元ツール</h3>
+        <input type="text" id="textToDecrypt" placeholder="復元するテキスト">
+        <button onclick="decryptText()">復元</button>
+        <div id="decryptedText"></div>
+      </div>
+    </div>
+
+  </div>
+  
+  <!-- 右下の署名 -->
+  <div class="signature">
+    ふうが作
+  </div>
+
+</body>
+</html>
