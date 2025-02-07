@@ -71,6 +71,10 @@ function updateWorldClock() {
   let hours = date.getUTCHours();
   let minutes = date.getUTCMinutes();
   let seconds = date.getUTCSeconds();
+  
+  // 現在のタイムゾーンに基づく表示
+  const country = "UTC";
+  document.getElementById("worldClockCountry").textContent = `国名: ${country}`;
   document.getElementById("worldClockDisplay").textContent =
     `${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
@@ -88,80 +92,48 @@ function loginAdmin() {
 
 function encryptText() {
   const text = document.getElementById("textToEncrypt").value;
-  const encrypted = btoa(text); // Base64暗号化
-  document.getElementById("encryptedText").textContent = "暗号化されたテキスト: " + encrypted;
+  const encrypted = btoa(text);
+  document.getElementById("encryptedText").textContent = encrypted;
 }
 
 function decryptText() {
-  const encryptedText = document.getElementById("textToDecrypt").value;
-  const decrypted = atob(encryptedText); // Base64復号化
-  document.getElementById("decryptedText").textContent = "復元されたテキスト: " + decrypted;
+  const encrypted = document.getElementById("textToDecrypt").value;
+  const decrypted = atob(encrypted);
+  document.getElementById("decryptedText").textContent = decrypted;
 }
 
-// 色の選択ツール
-document.getElementById("colorPicker").addEventListener("input", function(event) {
-  document.getElementById("selectedColor").textContent = event.target.value;
+// 色選択ツール
+document.getElementById("colorPicker").addEventListener("input", function () {
+  const color = this.value;
+  document.getElementById("selectedColor").textContent = color;
 });
 
-// 文字数カウント
-function countCharacters() {
-  const text = document.getElementById("textForCounting").value;
-  document.getElementById("charCount").textContent = text.length;
+// 通貨換算
+function convertCurrency() {
+  const amount = document.getElementById("currencyInput").value;
+  const rate = document.getElementById("currencySelect").value;
+  const convertedAmount = amount * rate;
+  document.getElementById("convertedCurrency").textContent = convertedAmount.toFixed(2);
 }
 
-// 画像エディタ (サンプル)
-document.getElementById("imageUpload").addEventListener("change", function(event) {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const img = new Image();
-      img.src = e.target.result;
-      img.onload = function() {
-        const canvas = document.getElementById("imageCanvas");
-        const ctx = canvas.getContext("2d");
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img, 0, 0);
-      };
+// 画像エディタ
+document.getElementById("imageUpload").addEventListener("change", function (e) {
+  const file = e.target.files[0];
+  const reader = new FileReader();
+  
+  reader.onload = function (event) {
+    const img = new Image();
+    img.src = event.target.result;
+    img.onload = function () {
+      const canvas = document.getElementById("imageCanvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
     };
-    reader.readAsDataURL(file);
-  }
+  };
+  reader.readAsDataURL(file);
 });
-
-// 時間計算
-function calculateTimeDifference() {
-  const startTime = document.getElementById("startTime").value;
-  const endTime = document.getElementById("endTime").value;
-  
-  const start = new Date(`1970-01-01T${startTime}:00`);
-  const end = new Date(`1970-01-01T${endTime}:00`);
-  
-  const diff = new Date(end - start);
-  const hours = diff.getUTCHours();
-  const minutes = diff.getUTCMinutes();
-  document.getElementById("timeDifference").textContent = `${hours}時間 ${minutes}分`;
-}
-
-// 文字列置換
-function replaceString() {
-  const originalText = document.getElementById("stringToReplace").value;
-  const replaceWith = document.getElementById("replaceString").value;
-  const replacedText = originalText.replace(/example/g, replaceWith);
-  document.getElementById("replacedString").textContent = replacedText;
-}
-
-// ユーザー名生成ツール
-function generateUsername() {
-  const username = "user" + Math.floor(Math.random() * 1000);
-  document.getElementById("generatedUsername").textContent = username;
-}
-
-// ランダムな数字生成ツール
-function generateRandomNumber() {
-  const randomNumber = Math.floor(Math.random() * 1000);
-  document.getElementById("randomNumber").textContent = randomNumber;
-}
 
 // QRコード生成
 function generateQRCode() {
@@ -171,32 +143,4 @@ function generateQRCode() {
     width: 128,
     height: 128
   });
-}
-
-// ヘックスカラーからRGBへの変換
-function hexToRgb() {
-  const hex = document.getElementById("hexColor").value;
-  const rgb = /^#([A-Fa-f0-9]{6})$/.exec(hex);
-  if (rgb) {
-    const r = parseInt(rgb[1].substring(0, 2), 16);
-    const g = parseInt(rgb[1].substring(2, 4), 16);
-    const b = parseInt(rgb[1].substring(4, 6), 16);
-    document.getElementById("rgbColor").textContent = `RGB: (${r}, ${g}, ${b})`;
-  } else {
-    document.getElementById("rgbColor").textContent = "無効なカラーコード";
-  }
-}
-
-// テキストサイズ変更
-function changeTextSize() {
-  const size = document.getElementById("textSize").value;
-  document.getElementById("textToResize").style.fontSize = size + "px";
-}
-
-// 時間帯変換ツール
-function convertTimezone() {
-  const timeInZone = document.getElementById("timeInCurrentZone").value;
-  const offset = parseInt(document.getElementById("timezoneOffset").value);
-  const convertedTime = new Date(new Date(`1970-01-01T${timeInZone}:00`).getTime() + offset * 3600000);
-  document.getElementById("convertedTime").textContent = `変換後の時間: ${convertedTime.getUTCHours()}:${convertedTime.getUTCMinutes()}:${convertedTime.getUTCSeconds()}`;
 }
