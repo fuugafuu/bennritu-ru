@@ -97,3 +97,14 @@ function decryptText() {
   const decrypted = atob(encryptedText); // Base64復号化
   document.getElementById("decryptedText").textContent = "復元されたテキスト: " + decrypted;
 }
+
+// 色の選択ツール
+document.getElementById("colorPicker").addEventListener("input", function(event) {
+  document.getElementById("selectedColor").textContent = event.target.value;
+});
+
+// 文字数カウント
+function countCharacters() {
+  const text = document.getElementById("textForCounting").value;
+  document.getElementById("charCount").textContent = text.length;
+}
